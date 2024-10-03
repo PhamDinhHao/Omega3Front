@@ -1,0 +1,249 @@
+.body {
+  background-color: #f0f0f0;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.cover-div {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+}
+
+.item-left {
+  width: 65%;
+  display: flex;
+  background-color: lightblue;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.item-left .react-autosuggest__container {
+  width: 670px;
+}
+
+.item-left .react-autosuggest__input {
+  width: 670px;
+}
+
+.item-right .react-autosuggest__container {
+  width: 250px;
+}
+
+.item-right .react-autosuggest__input {
+  width: 250px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.react-autosuggest__suggestions-container {
+  position: absolute;
+  width: 100%;
+  top: calc(70% + 4px);
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+}
+
+.react-autosuggest__suggestion {
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.react-autosuggest__suggestion--highlighted {
+  background-color: #cceeff;
+}
+
+.react-autosuggest__suggestion:hover {
+  background-color: #cceeff;
+}
+
+.item-table {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+// .empty-table {
+//   height: 600px;
+// }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.quantity-btn {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.quantity-btn:hover,
+.quantity-btn:focus {
+  border-color: #999;
+}
+
+.quantity {
+  margin: 0 5px;
+}
+
+.quantity-input {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  border: none;
+  background-color: transparent;
+  width: 50px;
+  color: #000;
+  text-align: center;
+}
+
+.quantity-input::-webkit-inner-spin-button,
+.quantity-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.item-right {
+  width: 30%;
+  background-color: lightblue;
+  padding: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-right div {
+  padding: 5px;
+  background-color: #fff;
+}
+
+.purchare-order {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-box {
+  flex: 1;
+  display: flex;
+}
+
+.user-name {
+  flex: 1;
+}
+
+.datetime-picker {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.quantity-box,
+.money-box,
+.money-difference-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-box .total-quantity,
+.money-box .total-money,
+.money-difference-box .total-money-difference {
+  margin-left: 10px;
+}
+
+.total-quantity {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.total-money,
+.total-money-difference {
+  font-weight: bold;
+}
+
+.wrap-button {
+  margin-top: auto;
+  text-align: right;
+}
+
+.wrap-button .btn i {
+  display: block;
+  text-align: center;
+  padding: 5px 10px;
+}
+
+.wrap-button .btn span {
+  text-align: center;
+}
+
+.note-box {
+  margin-top: 10px;
+}
+
+.note-input {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: white;
+}
+
+.note-input i {
+  margin-right: 5px;
+  color: #888;
+}
+
+.note-input textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 5px;
+  resize: none;
+  height: 70px;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}

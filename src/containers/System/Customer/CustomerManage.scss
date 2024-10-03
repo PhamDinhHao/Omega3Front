@@ -1,0 +1,108 @@
+.customer-manage {
+  max-width: inherit !important;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  background-color: #e8eaed;
+  border: 1px solid white;
+  margin: 0 100px;
+
+  .customer-content {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    .main-left {
+      width: 15%;
+      margin-right: 2rem;
+      margin-bottom: 2rem;
+      .heading-page {
+        .ng-binding {
+          font-size: 2rem;
+          font-weight: 700;
+        }
+      }
+      .checkbox-fillList {
+        padding: 10px;
+        margin-top: 30px;
+        font-size: 17px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #fff;
+
+        .check-box,
+        .radio-box {
+          font-size: 17px;
+        }
+
+        .radio-box {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 10px;
+        }
+
+        .radio-box input[type="radio"] {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .main-right {
+      width: 85%;
+      min-height: 800px;
+      position: relative;
+      margin-bottom: 20px;
+      .mainWrap {
+        .header-filter {
+          display: flex;
+          border: 1px solid green;
+          justify-content: space-between;
+
+          .header-filter-search {
+            width: 40%;
+          }
+          .header-filter-buttons {
+            align-content: center;
+            width: 40%;
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  .suppliers-table {
+    .ant-table {
+      background-color: #e8eaed;
+    }
+
+    .customer-row {
+      background-color: #fff !important;
+      &:hover {
+        background-color: #f5f5f5 !important;
+      }
+    }
+
+    .btn-edit,
+    .btn-delete {
+      width: 50px;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .btn-edit {
+      i {
+        font-size: 18px;
+        color: #ffa500;
+      }
+    }
+
+    .btn-delete {
+      i {
+        font-size: 18px;
+        color: rgb(214, 19, 45);
+      }
+    }
+  }
+}

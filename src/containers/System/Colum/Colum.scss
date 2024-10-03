@@ -1,0 +1,175 @@
+body {
+  font-family: Arial, sans-serif;
+  // background-color: lightgray;
+}
+
+.body-wrap {
+  width: 100%;
+  background-color: lightgray;
+  height: 600px;
+  overflow: scroll;
+}
+
+.wrapper-div {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+}
+
+.dashboard-container {
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.dashboard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: lightcyan;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header-item {
+  text-align: center;
+  flex: 1;
+  padding: 10px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.header-item:last-child {
+  border-right: none;
+}
+
+.header-item h3 {
+  margin: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-item p {
+  margin: 5px 0 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.header-item i {
+  margin-right: 8px;
+  color: #f5f1f1;
+  display: inline-block; /* Đảm bảo phần tử là khối inline để áp dụng border hình tròn */
+  width: 25px; /* Đặt chiều rộng và chiều cao giống nhau để tạo hình tròn */
+  height: 25px;
+  text-align: center; /* Căn giữa nội dung trong hình tròn */
+  line-height: 23px; /* Căn giữa nội dung trong hình tròn */
+  border: 2px solid #0071ba; /* Độ dày và màu sắc của border */
+  border-radius: 60%; /* Tạo hình tròn */
+  transition: background-color 0.3s ease; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.dollar-icon {
+  color: #f3eae8;
+  background-color: #0071ba;
+}
+
+.undo-icon {
+  color: #f3eae8;
+  background-color: #0071ba;
+}
+
+.arrow-down-icon {
+  color: #f3eae8;
+  background-color: #0071ba;
+}
+
+.calendar-icon {
+  color: #f3eae8;
+  background-color: #0071ba;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+}
+
+.left-column {
+  width: 75%;
+  padding: 20px;
+  border-right: 1px solid #e0e0e0;
+}
+
+.right-column {
+  width: 25%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.notifications,
+.activity-log {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.notifications h4,
+.activity-log h4 {
+  margin: 0 0 10px;
+}
+
+.activity-log ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.activity-log li {
+  margin-bottom: 10px;
+}
+
+.activity-log li i {
+  margin-right: 10px;
+}
+
+.top-content,
+.bot-content {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+h3 {
+  margin-top: 10px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+}
+
+.main-colum {
+  display: flex;
+  width: 100%;
+}
+
+.main-radio-colum {
+  width: 10%;
+}
+
+.radio-colum {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content-colum {
+  width: 90%;
+}
