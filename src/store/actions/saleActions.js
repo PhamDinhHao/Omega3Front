@@ -106,8 +106,9 @@ export const editSaleAndDetails = (Sale, SaleDetails) => {
                 Sale,
                 SaleDetails,
             });
-            // console.log("purdet", res);
             if (res && res.errCode === 0) {
+            console.log("purdet", res);
+
                 // toast.success("update user success") //thu vien toastify
                 dispatch(editSaleAndDetailsSuccess());
             } else {
@@ -127,5 +128,5 @@ export const editSaleAndDetailsSuccess = () => ({
 });
 
 export const editSaleAndDetailsFailed = () => ({
-    type: actionTypes.EDIT_SALE_AND_DETAILS_FAILDED,
+    type: actionTypes.EDITSALEE_AND_DETAILS_FAILDED,
 });

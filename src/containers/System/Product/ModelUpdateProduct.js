@@ -78,24 +78,25 @@ class ModelUpdateProduct extends Component {
   }
 
   setProductState = (product) => {
+    console.log(product);
     if (product && !isEmpty(product)) {
       let resultChooseLocation = [
         {
-          label: product.Location.locationName,
-          value: product.Location.id,
+          label: product.locationId.locationName,
+          value: product.locationId.id,
         },
       ];
       let resultChooseCategory = [
         {
-          label: product.Category.categoryName,
-          value: product.Category.id,
+          label: product.categoryId.categoryName,
+          value: product.categoryId.id,
         },
       ];
 
       let resultChooseUnit = [
         {
-          label: product.Unit.unitName,
-          value: product.Unit.id,
+          label: product.unitId.unitName,
+          value: product.unitId.id,
         },
       ];
 
@@ -111,8 +112,8 @@ class ModelUpdateProduct extends Component {
         salePrice: product.salePrice,
         quantity: product.quantity,
         description: product.description,
-        previewImgUrl: imageBase64,
-        image: imageBase64,
+        previewImgUrl: product.image,
+        image: product.image,
         selectedLocation: resultChooseLocation,
         selectedCategory: resultChooseCategory,
         selectedUnit: resultChooseUnit,
@@ -260,7 +261,7 @@ class ModelUpdateProduct extends Component {
       inputData.map((item, index) => {
         let object = {};
         object.label = item.categoryName;
-        object.value = item.id;
+        object.value = item._id;
         result.push(object);
       });
     }
@@ -396,11 +397,13 @@ class ModelUpdateProduct extends Component {
     if (isValid == true) {
       //call apicreat modal
       this.props.editProduct(this.state);
-      console.log("check product", this.state);
     }
   };
   handleChangeSelectCategory = (selectedCategory) => {
     this.setState({ selectedCategory: selectedCategory });
+  };
+  handleChangeSelectLocation = (selectedLocation) => {
+    this.setState({ selectedLocation: selectedLocation });
   };
   handleAddNewLocation = () => {
     this.setState({
@@ -573,12 +576,13 @@ class ModelUpdateProduct extends Component {
                   <label className="label-upload" htmlFor="previewImg">
                     Tải ảnh <i className="fas fa-upload"></i>
                   </label>
-                  <div
+                  <img
                     className="preview-image"
-                    style={{
-                      backgroundImage: `url(${this.state.previewImgUrl})`,
-                    }}
-                  ></div>
+                    src={this.state.image}
+                    // style={{
+                    //   backgroundImage: `url(${this.state.previewImgUrl})`,
+                    // }}
+                  ></img>
                 </div>
               </div>
             </div>

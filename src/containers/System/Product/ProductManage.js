@@ -49,7 +49,7 @@ class ProductManage extends Component {
 
             return (
               <img
-                src={imageBinary}
+                src={imageBase64}
                 alt="Product"
                 style={{ width: 36, height: 38 }}
                 onClick={() => this.handleImageClick(imageBinary)}

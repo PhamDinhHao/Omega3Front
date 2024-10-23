@@ -36,12 +36,10 @@ class SupplierReport extends Component {
     const { filterType, selectedDate, customRange } = this.state;
     let dataSuppliers;
 
-    console.log("Fetching data with filterType:", filterType);
-
     if (filterType === "custom") {
       const { startDate, endDate } = customRange;
       if (!startDate || !endDate) {
-        return; // Không fetch dữ liệu nếu chưa chọn đầy đủ ngày
+        return;
       }
       dataSuppliers = await getTop10SuppliersByRevenue(
         filterType,
@@ -55,8 +53,7 @@ class SupplierReport extends Component {
         selectedDate.toISOString()
       );
     }
-
-    this.setState({ dataSuppliers });
+    this.setState({ dataSuppliers: dataSuppliers });
   };
 
   onChangeFilterType = (e) => {
@@ -120,7 +117,7 @@ class SupplierReport extends Component {
                 <YAxis dataKey="supplierName" type="category" />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="totalQuantity" fill="#0071ba" name="Doanh thu" />
+                <Bar dataKey="totalRevenue" fill="#0071ba" name="Doanh thu" />
               </BarChart>
             </ResponsiveContainer>
           </div>

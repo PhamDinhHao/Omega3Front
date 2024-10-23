@@ -65,14 +65,14 @@ class Login extends Component {
     };
     sendOtpEmail = async () => {
         try {
-            const response = await axios.post("http://localhost:8080/send-otp-email", { email: this.state.email });
+            const response = await axios.post("http://localhost:5000/send-otp-email", { email: this.state.email });
         } catch (error) {
             console.log("error", error)
         }
     };
     verifyOtp = async (otp) => {
         try {
-            const response = await axios.post("http://localhost:8080/verify-otp", { email: this.state.email, otp });
+            const response = await axios.post("http://localhost:5000/verify-otp", { email: this.state.email, otp });
             if (response.data.success === true) {
                 this.setState({
                     isOpenChangePassword: !this.state.isOpenChangePassword
@@ -137,14 +137,14 @@ class Login extends Component {
                                     <div className="col-12 text-login">
                                         <Title level={5}>Đổi mật khẩu</Title>
                                     </div>
-                                    <div className="col-12 form-group login-input">
+                                    {/* <div className="col-12 form-group login-input">
                                         <Input.Password
                                             className="form-control"
                                             placeholder="Nhập mật khẩu hiện tại"
                                             value={currentPassword}
                                             onChange={this.handleOnChangeCurrentPassword}
                                         />
-                                    </div>
+                                    </div> */}
                                     <div className="col-12 form-group login-input">
                                         <Input.Password
                                             className="form-control"

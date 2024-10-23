@@ -98,7 +98,6 @@ class ModelNewProduct extends Component {
     let response = await getAllCategory("ALL");
     let response1 = await getAllUnit("ALL");
     let response2 = await getAllLocation("ALL");
-    console.log("res", response2);
     if (
       response &&
       response.errCode === 0 &&
@@ -270,7 +269,7 @@ class ModelNewProduct extends Component {
       inputData.map((item, index) => {
         let object = {};
         object.label = item.categoryName;
-        object.value = item.id;
+        object.value = item._id;
         result.push(object);
       });
     }

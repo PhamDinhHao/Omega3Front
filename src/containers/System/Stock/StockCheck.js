@@ -7,6 +7,7 @@ import Lightbox from "react-image-lightbox";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../../store/actions";
 import "../../System/Product/ProductManage.scss";
+import { deleteStockService } from "../../../services/stockService";
 
 class StockCheck extends Component {
   constructor(props) {
@@ -67,7 +68,10 @@ class StockCheck extends Component {
       previewImgUrl: "",
     };
   }
-
+  handleDeleteStockCheck = async (record) =>{
+    await deleteStockService(record.id);
+    this.props.fetchStockCheckRedux();
+  };
   componentDidMount() {
     this.props.fetchStockCheckRedux();
   }

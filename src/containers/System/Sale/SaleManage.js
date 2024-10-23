@@ -10,6 +10,7 @@ import Checkbox from "antd/es/checkbox/Checkbox";
 import CustomScrollbars from "../../../components/CustomScrollbars";
 import Lightbox from "react-image-lightbox";
 import { withRouter } from "react-router-dom";
+import { deleteSaleService } from "../../../services/saleService";
 
 class SaleManage extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class SaleManage extends Component {
         },
         {
           title: "Khách hàng",
-          dataIndex: ["Customer", "name"],
+          render: (text) => <span>{(text.customerId.name)}</span>,
         },
         {
           title: "Tổng Tiền",
@@ -83,7 +84,10 @@ class SaleManage extends Component {
   handleAddNewSale = () => {
     this.props.history.push("/system/sale-new");
   };
-
+  handleDeleteProduct = async (record) =>{
+    await deleteSaleService(record.id);
+    this.props.fetchSaleRedux();
+  };
   handleUpdateProduct = async (record) => {
     console.log("chcek creoce", record);
     await this.props.history.push({

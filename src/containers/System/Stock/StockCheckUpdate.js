@@ -26,7 +26,23 @@ class StockCheckUpdate extends Component {
     };
   }
 
-  componentDidMount() {}
+  async componentDidMount() {
+    const { state } = this.props.location;
+    if (state && state.record) {
+      const { record } = state;
+      console.log(record);
+      // await this.props.fetchProductBySaleIdRedux(record.id);
+      this.setState({
+        // Cập nhật state khác nếu cần thiết, ví dụ:
+        totalActualMoney: record.totalActualMoney,
+        totalMoneyDifference: record.totalMoneyDifference,
+        note: record.note,
+
+        // products: this.props.listProductBySaleId.data,
+        selectedDate: new Date(record.checkDate),
+      });
+    }
+  }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.productSuggestions !== this.props.productSuggestions) {

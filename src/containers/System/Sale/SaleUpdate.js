@@ -38,8 +38,8 @@ class SaleUpdate extends Component {
       this.setState({
         record,
         // Cập nhật state khác nếu cần thiết, ví dụ:
-        CustomerValue: record.Customer.name,
-        CustomerId: record.CustomerId,
+        CustomerValue: record.customerId.name,
+        CustomerId: record.customerId.id,
         // products: this.props.listProductBySaleId.data,
         selectedDate: new Date(record.saleDate),
       });
@@ -295,7 +295,7 @@ class SaleUpdate extends Component {
     const { products } = this.state;
     let totalMoney = 0;
     products.forEach((product) => {
-      totalMoney += product.quantity * product.salePrice;
+      totalMoney += product.quantity * product._doc.salePrice;
     });
     this.state.total = totalMoney;
     return totalMoney;
@@ -306,24 +306,23 @@ class SaleUpdate extends Component {
   };
 
   updateSaleAndDetails = async (selectedDate) => {
-    // console.log("updateSaleAndDetails called");
-    try {
+    
       const Sale = {
-        SaleId: this.state.record.id,
-        CustomerId: this.state.CustomerId,
+        saleId: this.state.record.id,
+        customerId: this.state.CustomerId,
         total: this.state.total,
       };
-
       const SaleDetails = this.state.products.map((product) => {
         const {
-          id: productId,
+          _doc: tempId,
           // name: productName,
           quantity,
           salePrice,
           total,
         } = product;
+        const productId = tempId._id;
         return {
-          SaleId: this.state.record.id,
+          saleId: this.state.record.id,
           productId: productId,
           // productName: productName,
           quantity: quantity,
@@ -331,6 +330,8 @@ class SaleUpdate extends Component {
           total: total,
         };
       });
+      console.log("updateSaleAndDetails called");
+
       // console.log(
       //   "editSaleAndDetails called with:",
       //   Sale,
@@ -339,10 +340,7 @@ class SaleUpdate extends Component {
       await this.props.editSaleAndDetailsRedux(Sale, SaleDetails);
 
       console.log("Sale and details updated successfully!");
-      this.props.history.push("/system/Sale");
-    } catch (error) {
-      console.error("Error updating Sale and details:", error);
-    }
+      this.props.history.push("/system/sale");
   };
 
   render() {
@@ -357,7 +355,7 @@ class SaleUpdate extends Component {
       selectedDate,
       record,
     } = this.state;
-    // console.log("products", products);
+    console.log("products", products);
     const CustomerInputProps = {
       placeholder: "Tìm khách hàng",
       value: CustomerValue,
@@ -418,7 +416,6 @@ class SaleUpdate extends Component {
                 <tr>
                   <th></th>
                   <th>STT</th>
-                  <th>Id</th>
                   <th>Tên</th>
                   <th>Số Lượng</th>
                   <th>Giá Bán</th>
@@ -440,8 +437,7 @@ class SaleUpdate extends Component {
                       </button>
                     </td>
                     <td>{index + 1}</td>
-                    <td>{product.id}</td>
-                    <td>{product.productName}</td>
+                    <td>{product._doc.productName}</td>
                     <td>
                       <button
                         className="quantity-btn"
@@ -471,7 +467,7 @@ class SaleUpdate extends Component {
                     <td>
                       <input
                         type="number"
-                        value={product.salePrice}
+                        value={product._doc.salePrice}
                         onChange={(e) =>
                           this.onPriceChange(index, e.target.value)
                         }
@@ -479,7 +475,7 @@ class SaleUpdate extends Component {
                         pattern="[0-9]*"
                       />
                     </td>
-                    <td>{product.quantity * product.salePrice}</td>
+                    <td>{product.quantity * product._doc.salePrice}</td>
                   </tr>
                 ))}
               </tbody>

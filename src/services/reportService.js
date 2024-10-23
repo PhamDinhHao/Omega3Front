@@ -6,7 +6,7 @@ const getTop10ProductBySale = async (
   startDate = null,
   endDate = null
 ) => {
-  return axios.get(`http://localhost:8080/api/top-10-sale-product-revenue`, {
+  return axios.get(`http://localhost:5000/api/top-10-sale-product-revenue`, {
     params: {
       filterType,
       selectedDate,
@@ -22,7 +22,7 @@ const getTop10ProductByQuantity = async (
   startDate = null,
   endDate = null
 ) => {
-  return axios.get(`http://localhost:8080/api/top-10-sale-product-quantity`, {
+  return axios.get(`http://localhost:5000/api/top-10-sale-product-quantity`, {
     params: {
       filterType,
       selectedDate,
@@ -38,7 +38,7 @@ const getTop10CustomersByRevenue = (
   startDate = null,
   endDate = null
 ) => {
-  return axios.get("http://localhost:8080/api/top-10-customer-revenue", {
+  return axios.get("http://localhost:5000/api/top-10-customer-revenue", {
     params: { filterType, selectedDate, startDate, endDate },
   });
 };
@@ -49,7 +49,7 @@ const getTop10SuppliersByRevenue = (
   startDate = null,
   endDate = null
 ) => {
-  return axios.get("http://localhost:8080/api/top-10-supplier-revenue", {
+  return axios.get("http://localhost:5000/api/top-10-supplier-revenue", {
     params: { filterType, selectedDate, startDate, endDate },
   });
 };

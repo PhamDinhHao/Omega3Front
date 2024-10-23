@@ -13,13 +13,19 @@ const getAllPurchases = (inputid) => {
 };
 
 const editPurchaseAndDetailsService = (inputdata) => {
-  console.log("check input", inputdata);
   return axios.put("/api/edit-purchase-and-details", inputdata);
 };
-
+const deletePurchaseService = (purchaseid) => {
+  return axios.delete("/api/delete-purchase", {
+    data: {
+      id: purchaseid,
+    },
+  });
+};
 export {
   createNewPurchaseService,
   createNewPurchaseDetailService,
   getAllPurchases,
   editPurchaseAndDetailsService,
+  deletePurchaseService
 };

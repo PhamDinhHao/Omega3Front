@@ -295,7 +295,7 @@ class SaleNew extends Component {
         );
 
         console.log("Sale and details saved successfully!");
-        // this.props.history.push("/system/sale");
+        this.props.history.push("/system/sale");
       } else {
         alert("Thiếu thông tin khách hàng hoặc chưa có sản phẩm");
       }

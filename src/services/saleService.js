@@ -13,6 +13,13 @@ const getAllSales = (inputid) => {
 
 const editSaleAndDetailsService = (inputdata) => {
     console.log("check input", inputdata);
-    return axios.put("/api/total-sales-by-day", inputdata);
+    return axios.put("/api/edit-sale-and-details", inputdata);
 };
-export { createNewSaleService, createNewSaleDetailService, getAllSales, editSaleAndDetailsService };
+const deleteSaleService = (saleid) => {
+    return axios.delete("/api/delete-sale", {
+      data: {
+        id: saleid,
+      },
+    });
+  };
+export { createNewSaleService, createNewSaleDetailService, getAllSales, editSaleAndDetailsService, deleteSaleService };

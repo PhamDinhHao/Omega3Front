@@ -23,6 +23,7 @@ import {
   Bar,
   BarChart,
 } from "recharts";
+import { deletePurchaseService } from "../../../services/purchaseService";
 
 class PurchaseManage extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class PurchaseManage extends Component {
         },
         {
           title: "Nhà cung cấp",
-          dataIndex: ["Supplier", "name"],
+          render: (text) => <span>{(text.supplierId.name)}</span>,
         },
         {
           title: "Tổng Tiền",
@@ -103,7 +104,10 @@ class PurchaseManage extends Component {
       state: { record },
     });
   };
-
+  handleDeleteProduct = async (record) =>{
+    await deletePurchaseService(record.id);
+    this.props.fetchPurchaseRedux();
+  };
   handleChangeSelect = (selectedPurchase) => {
     this.setState({ selectedPurchase });
   };
@@ -253,7 +257,6 @@ class PurchaseManage extends Component {
                       onRow={(record, rowIndex) => {
                         return {
                           onClick: (event) => {
-                            console.log("check record", record);
                           },
                         };
                       }}

@@ -39,8 +39,8 @@ class PurchaseUpdate extends Component {
       this.setState({
         record,
         // Cập nhật state khác nếu cần thiết, ví dụ:
-        supplierValue: record.Supplier.name,
-        supplierId: record.supplierId,
+        supplierValue: record.supplierId.name,
+        supplierId: record.supplierId.id,
         // products: this.props.listProductByPurchaseId.data,
         selectedDate: new Date(record.purchaseDate),
       });
@@ -297,7 +297,7 @@ class PurchaseUpdate extends Component {
     const { products } = this.state;
     let totalMoney = 0;
     products.forEach((product) => {
-      totalMoney += product.quantity * product.costPrice;
+      totalMoney += product.quantity * product._doc.costPrice;
     });
     this.state.total = totalMoney;
     return totalMoney;
@@ -308,26 +308,27 @@ class PurchaseUpdate extends Component {
   };
 
   updatePurchaseAndDetails = async (selectedDate) => {
-    // console.log("updatePurchaseAndDetails called");
+    console.log("updatePurchaseAndDetails called",this.state);
 
     const { products, supplierId } = this.state;
-    console.log(products);
-    console.log(supplierId);
     if (products.length > 0 && supplierId != null) {
       const purchase = {
         purchaseId: this.state.record.id,
-        supplierId: this.state.supplierId,
+        supplierId: this.state.supplierId.id,
         total: this.state.total,
       };
 
       const purchaseDetails = this.state.products.map((product) => {
+        console.log(product);
+
         const {
-          id: productId,
+          _doc: tempId,
           // name: productName,
           quantity,
           costPrice,
           total,
         } = product;
+        const productId = tempId._id;
         return {
           purchaseId: this.state.record.id,
           productId: productId,
@@ -354,7 +355,7 @@ class PurchaseUpdate extends Component {
       selectedDate,
       record,
     } = this.state;
-    // console.log("products", products);
+    console.log("products", products);
     const supplierInputProps = {
       placeholder: "Search supplier",
       value: supplierValue,
@@ -415,7 +416,6 @@ class PurchaseUpdate extends Component {
                 <tr>
                   <th></th>
                   <th>STT</th>
-                  <th>Id</th>
                   <th>Tên</th>
                   <th>Số Lượng</th>
                   <th>Giá Nhập</th>
@@ -437,8 +437,7 @@ class PurchaseUpdate extends Component {
                       </button>
                     </td>
                     <td>{index + 1}</td>
-                    <td>{product.id}</td>
-                    <td>{product.productName}</td>
+                    <td>{product._doc.productName}</td>
                     <td>
                       <button
                         className="quantity-btn"
@@ -468,7 +467,7 @@ class PurchaseUpdate extends Component {
                     <td>
                       <input
                         type="number"
-                        value={product.costPrice}
+                        value={product._doc.costPrice}
                         onChange={(e) =>
                           this.onPriceChange(index, e.target.value)
                         }
@@ -476,7 +475,7 @@ class PurchaseUpdate extends Component {
                         pattern="[0-9]*"
                       />
                     </td>
-                    <td>{product.quantity * product.costPrice}</td>
+                    <td>{product.quantity * product._doc.costPrice}</td>
                   </tr>
                 ))}
               </tbody>

@@ -33,7 +33,6 @@ class Colum extends Component {
       value: 1,
     };
   }
-
   async componentDidMount() {
     try {
       const [res1, res2, res3, res4] = await Promise.all([
@@ -42,16 +41,19 @@ class Colum extends Component {
         getAllHistorySaleMonth(),
         getAllHistoryPurchaseMonth(),
       ]);
-      this.setState({
-        dataSale: res1.data,
-        dataPurchase: res2.data,
-        dataSaleMonth: res3.data,
-        dataPurchaseMonth: res4.data,
-      });
+      if (res1 && res2 && res3 && res4) {
+        this.setState({
+          dataSale: res1.data, 
+          dataPurchase: res2.data, 
+          dataSaleMonth: res3.data,
+          dataPurchaseMonth: res4.data,
+        });
+      } 
     } catch (error) {
       console.error("Error fetching data", error);
     }
   }
+  
 
   onChange = (e) => {
     this.setState({ value: e.target.value });
@@ -60,6 +62,7 @@ class Colum extends Component {
   render() {
     const { dataSale, dataSaleMonth, dataPurchase, dataPurchaseMonth, value } =
       this.state;
+      console.log(this.state);
     const totalSale = value === 2 ? dataSaleMonth : dataSale;
     const totalPurchse = value === 2 ? dataPurchaseMonth : dataPurchase;
 
